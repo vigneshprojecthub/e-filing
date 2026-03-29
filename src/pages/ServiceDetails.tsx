@@ -188,7 +188,7 @@ export default function ServiceDetails() {
                     href={`https://wa.me/918754065383?text=Hi, I'm interested in ${service.title}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-2xl font-bold transition-all flex items-center space-x-2 shadow-lg shadow-green-600/20"
+                    className="bg-orange-600 hover:bg-orange-500 text-white px-8 py-4 rounded-2xl font-bold transition-all flex items-center space-x-2 shadow-lg shadow-orange-600/20"
                   >
                     <MessageSquare className="w-5 h-5" />
                     <span>WhatsApp</span>

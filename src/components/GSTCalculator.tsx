@@ -41,55 +41,54 @@ export default function GSTCalculator() {
   const gstRates = [5, 12, 18, 28];
 
   return (
-    <section id="gst-calculator" className="py-24 bg-surface relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,rgba(var(--primary-rgb),0.05),transparent_50%)]"></div>
+    <section id="gst-calculator" className="py-32 bg-white relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,rgba(var(--accent-rgb),0.03),transparent_50%)]"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <Reveal>
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              <Calculator className="w-4 h-4" />
-              <span>Financial Tools</span>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+            <div className="max-w-2xl">
+              <span className="text-accent font-black text-[11px] uppercase tracking-[0.3em] mb-4 block">Financial Tools</span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary uppercase leading-none">
+                GST <span className="text-accent">Calculator</span>
+              </h2>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-text-main">
-              GST <span className="text-accent">Calculator</span>
-            </h2>
-            <p className="text-text-muted max-w-2xl mx-auto">
-              Quickly calculate GST amounts for your business transactions with our easy-to-use tool.
+            <p className="text-text-muted max-w-md font-medium">
+              Quickly calculate GST amounts for your business transactions with our professional-grade financial tool.
             </p>
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Input Section */}
           <Reveal delay={0.1}>
-            <div className="bg-white border border-gray-100 p-8 rounded-3xl shadow-2xl">
-              <div className="space-y-8">
-                <div>
-                  <label className="block text-sm font-medium text-text-muted mb-3">Amount (₹)</label>
+            <div className="kratz-card bg-surface/30">
+              <div className="space-y-10">
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black text-primary uppercase tracking-widest ml-1">Amount (₹)</label>
                   <div className="relative">
-                    <IndianRupee className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
+                    <IndianRupee className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
                     <input
                       type="number"
                       value={amount || ''}
                       onChange={(e) => setAmount(Number(e.target.value))}
                       placeholder="Enter amount"
-                      className="w-full bg-surface border border-gray-100 rounded-2xl py-4 pl-12 pr-4 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-lg"
+                      className="w-full bg-white border border-line rounded-2xl py-5 pl-14 pr-6 text-primary font-bold focus:outline-none focus:border-accent transition-all text-xl placeholder:text-text-muted/30"
                     />
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-text-muted mb-3">GST Rate (%)</label>
-                  <div className="grid grid-cols-4 gap-3">
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black text-primary uppercase tracking-widest ml-1">GST Rate (%)</label>
+                  <div className="grid grid-cols-4 gap-4">
                     {gstRates.map((rate) => (
                       <button
                         key={rate}
                         onClick={() => setGstRate(rate)}
-                        className={`py-3 rounded-xl text-sm font-bold transition-all border ${
+                        className={`py-4 rounded-xl text-sm font-black transition-all border-2 ${
                           gstRate === rate
-                            ? 'bg-primary border-primary text-white shadow-lg shadow-primary/20'
-                            : 'bg-surface border-gray-100 text-text-muted hover:border-primary/50'
+                            ? 'bg-primary border-primary text-white shadow-xl shadow-primary/20'
+                            : 'bg-white border-line text-text-muted hover:border-accent hover:text-accent'
                         }`}
                       >
                         {rate}%
@@ -98,32 +97,32 @@ export default function GSTCalculator() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="flex items-center justify-between p-4 bg-surface rounded-2xl border border-gray-100">
-                    <span className="text-sm font-medium text-text-muted">GST Inclusive?</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="flex items-center justify-between p-6 bg-white rounded-2xl border border-line">
+                    <span className="text-[10px] font-black text-primary uppercase tracking-widest">GST Inclusive?</span>
                     <button
                       onClick={() => setIsInclusive(!isInclusive)}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${
-                        isInclusive ? 'bg-primary' : 'bg-gray-200'
+                      className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors focus:outline-none ${
+                        isInclusive ? 'bg-accent' : 'bg-gray-200'
                       }`}
                     >
                       <span
-                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                        className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform shadow-sm ${
                           isInclusive ? 'translate-x-6' : 'translate-x-1'
                         }`}
                       />
                     </button>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-surface rounded-2xl border border-gray-100">
-                    <span className="text-sm font-medium text-text-muted">Inter-state?</span>
+                  <div className="flex items-center justify-between p-6 bg-white rounded-2xl border border-line">
+                    <span className="text-[10px] font-black text-primary uppercase tracking-widest">Inter-state?</span>
                     <button
                       onClick={() => setIsInterState(!isInterState)}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${
-                        isInterState ? 'bg-accent' : 'bg-gray-200'
+                      className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors focus:outline-none ${
+                        isInterState ? 'bg-primary' : 'bg-gray-200'
                       }`}
                     >
                       <span
-                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                        className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform shadow-sm ${
                           isInterState ? 'translate-x-6' : 'translate-x-1'
                         }`}
                       />
@@ -136,51 +135,54 @@ export default function GSTCalculator() {
 
           {/* Results Section */}
           <Reveal delay={0.2}>
-            <div className="space-y-6">
-              <div className="bg-white border border-gray-100 p-8 rounded-3xl relative overflow-hidden group shadow-xl">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors"></div>
+            <div className="space-y-8">
+              <div className="bg-primary text-white p-12 rounded-[48px] relative overflow-hidden shadow-3xl">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 blur-[80px] rounded-full -mr-32 -mt-32"></div>
                 
-                <div className="space-y-6 relative z-10">
-                  <div className="flex justify-between items-end border-b border-gray-100 pb-6">
+                <div className="space-y-10 relative z-10">
+                  <div className="grid grid-cols-2 gap-8 border-b border-white/10 pb-10">
                     <div>
-                      <p className="text-text-muted text-sm mb-1">Original Amount</p>
-                      <h3 className="text-2xl font-bold text-text-main">₹{results.originalAmount.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</h3>
+                      <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em] mb-2">Original Amount</p>
+                      <h3 className="text-3xl font-black">₹{results.originalAmount.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</h3>
                     </div>
                     <div className="text-right">
-                      <p className="text-text-muted text-sm mb-1">GST ({gstRate}%)</p>
-                      <h3 className="text-2xl font-bold text-accent">+ ₹{results.gstAmount.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</h3>
+                      <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em] mb-2">GST ({gstRate}%)</p>
+                      <h3 className="text-3xl font-black text-accent">+ ₹{results.gstAmount.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</h3>
                     </div>
                   </div>
 
                   <div>
-                    <p className="text-text-muted text-sm mb-1">Total Amount</p>
-                    <h3 className="text-5xl font-bold text-primary">₹{results.totalAmount.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</h3>
+                    <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em] mb-3">Total Amount</p>
+                    <h3 className="text-6xl md:text-7xl font-black text-white tracking-tighter">₹{results.totalAmount.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</h3>
                   </div>
 
                   <div className="pt-4">
-                    <div className="p-4 bg-primary/5 border border-primary/20 rounded-2xl text-center">
-                      <p className="text-primary text-sm font-medium">Calculation complete based on current GST rates.</p>
+                    <div className="p-5 bg-white/5 border border-white/10 rounded-2xl flex items-center space-x-4">
+                      <div className="w-10 h-10 bg-accent rounded-xl flex items-center justify-center shrink-0">
+                        <Calculator className="w-5 h-5 text-white" />
+                      </div>
+                      <p className="text-white/60 text-sm font-medium leading-tight">Calculation complete based on current GST rates and regulations.</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {!isInterState ? (
                   <>
-                    <div className="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm">
-                      <p className="text-text-muted text-xs uppercase tracking-wider font-bold mb-2">CGST ({(gstRate/2).toFixed(1)}%)</p>
-                      <p className="text-xl font-bold text-text-main">₹{(results.gstAmount / 2).toLocaleString('en-IN', { maximumFractionDigits: 2 })}</p>
+                    <div className="bg-surface border border-line p-8 rounded-3xl">
+                      <p className="text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-3">CGST ({(gstRate/2).toFixed(1)}%)</p>
+                      <p className="text-3xl font-black text-primary">₹{(results.gstAmount / 2).toLocaleString('en-IN', { maximumFractionDigits: 2 })}</p>
                     </div>
-                    <div className="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm">
-                      <p className="text-text-muted text-xs uppercase tracking-wider font-bold mb-2">SGST ({(gstRate/2).toFixed(1)}%)</p>
-                      <p className="text-xl font-bold text-text-main">₹{(results.gstAmount / 2).toLocaleString('en-IN', { maximumFractionDigits: 2 })}</p>
+                    <div className="bg-surface border border-line p-8 rounded-3xl">
+                      <p className="text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-3">SGST ({(gstRate/2).toFixed(1)}%)</p>
+                      <p className="text-3xl font-black text-primary">₹{(results.gstAmount / 2).toLocaleString('en-IN', { maximumFractionDigits: 2 })}</p>
                     </div>
                   </>
                 ) : (
-                  <div className="col-span-2 bg-white border border-gray-100 p-6 rounded-2xl shadow-sm">
-                    <p className="text-text-muted text-xs uppercase tracking-wider font-bold mb-2">IGST ({gstRate}%)</p>
-                    <p className="text-xl font-bold text-text-main">₹{results.gstAmount.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</p>
+                  <div className="col-span-2 bg-surface border border-line p-8 rounded-3xl">
+                    <p className="text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-3">IGST ({gstRate}%)</p>
+                    <p className="text-3xl font-black text-primary">₹{results.gstAmount.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</p>
                   </div>
                 )}
               </div>

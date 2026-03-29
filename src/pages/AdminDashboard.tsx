@@ -153,7 +153,7 @@ function Overview({ stats }: { stats: { services: number, articles: number, enqu
           { name: 'Total Services', value: stats.services, icon: <Briefcase className="w-6 h-6" />, color: 'primary' },
           { name: 'Active Articles', value: stats.articles, icon: <FileText className="w-6 h-6" />, color: 'blue' },
           { name: 'Latest Updates', value: stats.latestUpdates, icon: <Zap className="w-6 h-6" />, color: 'yellow' },
-          { name: 'New Enquiries', value: stats.enquiries, icon: <MessageSquare className="w-6 h-6" />, color: 'green' },
+          { name: 'New Enquiries', value: stats.enquiries, icon: <MessageSquare className="w-6 h-6" />, color: 'orange' },
         ].map((stat, index) => (
           <Reveal key={stat.name} delay={index * 0.1}>
             <div className="bg-[var(--color-surface)] border border-[var(--color-accent)]/20 p-8 rounded-3xl relative overflow-hidden group h-full">
@@ -162,7 +162,7 @@ function Overview({ stats }: { stats: { services: number, articles: number, enqu
                 stat.color === 'primary' ? 'bg-[var(--color-primary)]/10 group-hover:bg-[var(--color-primary)]/20' :
                 stat.color === 'blue' ? 'bg-blue-500/10 group-hover:bg-blue-500/20' :
                 stat.color === 'yellow' ? 'bg-yellow-500/10 group-hover:bg-yellow-500/20' :
-                'bg-green-500/10 group-hover:bg-green-500/20'
+                'bg-orange-500/10 group-hover:bg-orange-500/20'
               )}></div>
               <div className="relative z-10">
                 <div className={cn(
@@ -170,7 +170,7 @@ function Overview({ stats }: { stats: { services: number, articles: number, enqu
                   stat.color === 'primary' ? 'bg-[var(--color-primary)]/20 text-[var(--color-primary)]' :
                   stat.color === 'blue' ? 'bg-blue-500/20 text-blue-500' :
                   stat.color === 'yellow' ? 'bg-yellow-500/20 text-yellow-500' :
-                  'bg-green-500/20 text-green-500'
+                  'bg-orange-500/20 text-orange-500'
                 )}>
                   {stat.icon}
                 </div>
@@ -198,9 +198,9 @@ function Overview({ stats }: { stats: { services: number, articles: number, enqu
               <span className="text-[var(--color-text-muted)] font-medium">Add Latest Update</span>
               <Zap className="w-5 h-5 text-yellow-500 group-hover:scale-110 transition-transform" />
             </Link>
-            <Link to="/admin/enquiries" className="flex items-center justify-between p-4 bg-[var(--color-background)] border border-[var(--color-accent)]/20 rounded-2xl hover:border-green-500/50 transition-all group">
+            <Link to="/admin/enquiries" className="flex items-center justify-between p-4 bg-[var(--color-background)] border border-[var(--color-accent)]/20 rounded-2xl hover:border-orange-500/50 transition-all group">
               <span className="text-[var(--color-text-muted)] font-medium">View Enquiries</span>
-              <MessageSquare className="w-5 h-5 text-green-500 group-hover:-translate-y-1 transition-transform" />
+              <MessageSquare className="w-5 h-5 text-orange-500 group-hover:-translate-y-1 transition-transform" />
             </Link>
             <Link to="/" className="flex items-center justify-between p-4 bg-[var(--color-background)] border border-[var(--color-accent)]/20 rounded-2xl hover:border-[var(--color-text-muted)]/50 transition-all group">
               <span className="text-[var(--color-text-muted)] font-medium">View Site</span>
@@ -765,7 +765,7 @@ function ViewEnquiries({ enquiries }: { enquiries: Enquiry[] }) {
     switch (status) {
       case 'new': return 'bg-blue-500/10 text-blue-500 border-blue-500/20';
       case 'read': return 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20';
-      case 'resolved': return 'bg-green-500/10 text-green-500 border-green-500/20';
+      case 'resolved': return 'bg-orange-500/10 text-orange-500 border-orange-500/20';
       default: return 'bg-[var(--color-background)] text-[var(--color-text-muted)] border-[var(--color-accent)]/20';
     }
   };
@@ -831,7 +831,7 @@ function ViewEnquiries({ enquiries }: { enquiries: Enquiry[] }) {
                       >
                         <option value="new" className="bg-[var(--color-surface)] text-blue-500">New</option>
                         <option value="read" className="bg-[var(--color-surface)] text-yellow-500">Read</option>
-                        <option value="resolved" className="bg-[var(--color-surface)] text-green-500">Resolved</option>
+                        <option value="resolved" className="bg-[var(--color-surface)] text-orange-500">Resolved</option>
                       </select>
                     </td>
                     <td className="px-6 py-5">
