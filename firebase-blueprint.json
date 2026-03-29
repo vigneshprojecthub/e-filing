@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "Service": {
+      "title": "Service",
+      "description": "A corporate service offered by the company.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "The name of the service." },
+        "description": { "type": "string", "description": "A brief description of the service." },
+        "category": { "type": "string", "description": "The category the service belongs to (e.g., GST, MCA)." }
+      },
+      "required": ["title", "description", "category"]
+    },
+    "Article": {
+      "title": "Article",
+      "description": "A case law update or news article.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "The title of the article." },
+        "description": { "type": "string", "description": "The content or summary of the article." },
+        "date": { "type": "string", "format": "date-time", "description": "The publication date." },
+        "category": { "type": "string", "enum": ["MCA", "GST", "Income Tax"], "description": "The main topic of the article." },
+        "subCategory": { "type": "string", "description": "The sub-topic of the article." },
+        "imageUrl": { "type": "string", "description": "URL of the article image." },
+        "pdfUrl": { "type": "string", "description": "URL of the article PDF." }
+      },
+      "required": ["title", "description", "date", "category"]
+    },
+    "Enquiry": {
+      "title": "Enquiry",
+      "description": "A customer enquiry for a service.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "The name of the enquirer." },
+        "email": { "type": "string", "format": "email", "description": "The email of the enquirer." },
+        "service": { "type": "string", "description": "The service they are enquiring about." },
+        "message": { "type": "string", "description": "The enquiry message." },
+        "timestamp": { "type": "string", "format": "date-time", "description": "When the enquiry was made." },
+        "status": { "type": "string", "enum": ["new", "read", "resolved"], "description": "The status of the enquiry." }
+      },
+      "required": ["name", "email", "service", "message", "timestamp", "status"]
+    },
+    "User": {
+      "title": "User",
+      "description": "A user of the application.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email", "description": "The user's email." },
+        "role": { "type": "string", "enum": ["admin", "user"], "description": "The user's role." }
+      },
+      "required": ["email", "role"]
+    },
+    "LatestUpdate": {
+      "title": "Latest Update",
+      "description": "A scrolling ticker update.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "The title of the update." },
+        "timestamp": { "type": "string", "format": "date-time", "description": "The timestamp of the update." }
+      },
+      "required": ["title", "timestamp"]
+    }
+  },
+  "firestore": {
+    "services": { "schema": "Service", "description": "Collection of corporate services." },
+    "articles": { "schema": "Article", "description": "Collection of news and case law updates." },
+    "enquiries": { "schema": "Enquiry", "description": "Collection of customer enquiries." },
+    "users": { "schema": "User", "description": "Collection of user profiles and roles." },
+    "latestUpdates": { "schema": "LatestUpdate", "description": "Collection of scrolling ticker updates." }
+  }
+}
