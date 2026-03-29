@@ -141,42 +141,38 @@ export default function TaxCalculator() {
   };
 
   return (
-    <section id="tax-calculator" className="py-32 bg-surface/30 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_50%,rgba(var(--primary-rgb),0.03),transparent_50%)]"></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+    <section id="tax-calculator" className="py-24 bg-surface">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <Reveal>
             <div>
-              <span className="text-accent font-black text-[11px] uppercase tracking-[0.3em] mb-4 block">Tax Planning</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary uppercase leading-none mb-10">
-                Income Tax <br />
-                <span className="text-accent">Calculator</span>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-primary">
+                Income Tax <span className="text-accent">Calculator</span>
               </h2>
-              <p className="text-text-muted mb-12 leading-relaxed font-medium max-w-lg">
+              <p className="text-text-muted mb-10 leading-relaxed">
                 Compare your tax liability between the Old and New Tax Regimes. 
                 Updated with Marginal Relief rules and salaried standard deductions.
               </p>
               
-              <div className="space-y-8">
-                <div className="flex items-start space-x-6">
-                  <div className="w-14 h-14 bg-white border border-line rounded-2xl flex items-center justify-center shrink-0 shadow-sm">
-                    <Info className="w-6 h-6 text-primary" />
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+                    <Info className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h4 className="text-primary font-black text-sm uppercase tracking-widest mb-1">Standard Deduction</h4>
-                    <p className="text-text-muted text-sm font-medium leading-relaxed">
+                    <h4 className="text-text-main font-bold mb-1">Standard Deduction</h4>
+                    <p className="text-text-muted text-sm">
                       {getStandardDeductionText()} standard deduction is applied automatically for salaried persons.
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-6">
-                  <div className="w-14 h-14 bg-white border border-line rounded-2xl flex items-center justify-center shrink-0 shadow-sm">
-                    <IndianRupee className="w-6 h-6 text-accent" />
+                <div className="flex items-start space-x-4">
+                  <div className="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
+                    <IndianRupee className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <h4 className="text-primary font-black text-sm uppercase tracking-widest mb-1">Rebate & Marginal Relief</h4>
-                    <p className="text-text-muted text-sm font-medium leading-relaxed">
+                    <h4 className="text-text-main font-bold mb-1">Rebate & Marginal Relief</h4>
+                    <p className="text-text-muted text-sm">
                       Zero tax for income up to {getRebateText()}. Marginal relief ensures tax doesn't exceed excess income above the limit.
                     </p>
                   </div>
@@ -186,60 +182,58 @@ export default function TaxCalculator() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <div className="kratz-card bg-white shadow-3xl p-10 md:p-16">
-              <div className="space-y-10 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black text-primary uppercase tracking-widest ml-1">Financial Year</label>
-                    <div className="relative">
-                      <select
-                        value={selectedYear}
-                        onChange={(e) => setSelectedYear(e.target.value as any)}
-                        className="w-full bg-surface border border-line rounded-2xl py-5 px-6 text-primary font-bold focus:outline-none focus:border-accent transition-all appearance-none cursor-pointer"
-                      >
-                        <option value="2025-26">FY 2025-26 (AY 2026-27)</option>
-                        <option value="2024-25">FY 2024-25 (AY 2025-26)</option>
-                        <option value="2023-24">FY 2023-24 (AY 2024-25)</option>
-                        <option value="2022-23">FY 2022-23 (AY 2023-24)</option>
-                        <option value="2021-22">FY 2021-22 (AY 2022-23)</option>
-                        <option value="2020-21">FY 2020-21 (AY 2021-22)</option>
-                      </select>
-                      <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-text-muted">
-                        <ArrowRight className="w-4 h-4 rotate-90" />
-                      </div>
-                    </div>
+            <div className="bg-white border border-gray-100 p-8 md:p-12 rounded-[40px] shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full -mr-16 -mt-16"></div>
+              
+              <div className="space-y-8 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-text-muted ml-1">Financial Year</label>
+                    <select
+                      value={selectedYear}
+                      onChange={(e) => setSelectedYear(e.target.value as any)}
+                      className="w-full bg-surface border border-gray-100 rounded-2xl py-4 px-6 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-bold appearance-none"
+                    >
+                      <option value="2025-26">FY 2025-26 (AY 2026-27)</option>
+                      <option value="2024-25">FY 2024-25 (AY 2025-26)</option>
+                      <option value="2023-24">FY 2023-24 (AY 2024-25)</option>
+                      <option value="2022-23">FY 2022-23 (AY 2023-24)</option>
+                      <option value="2021-22">FY 2021-22 (AY 2022-23)</option>
+                      <option value="2020-21">FY 2020-21 (AY 2021-22)</option>
+                    </select>
                   </div>
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black text-primary uppercase tracking-widest ml-1">Annual Gross Income (₹)</label>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-text-muted ml-1">Annual Gross Income (₹)</label>
                     <input
                       type="number"
                       value={income || ''}
                       onChange={(e) => setIncome(Number(e.target.value))}
-                      className="w-full bg-surface border border-line rounded-2xl py-5 px-6 text-primary font-bold focus:outline-none focus:border-accent transition-all placeholder:text-text-muted/30"
+                      className="w-full bg-surface border border-gray-100 rounded-2xl py-4 px-6 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-bold"
                       placeholder="e.g., 1200000"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black text-primary uppercase tracking-widest ml-1">Total Deductions (80C, etc.)</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-text-muted ml-1">Total Deductions (80C, etc.)</label>
                     <input
                       type="number"
                       value={deductions || ''}
                       onChange={(e) => setDeductions(Number(e.target.value))}
-                      className="w-full bg-surface border border-line rounded-2xl py-5 px-6 text-primary font-bold focus:outline-none focus:border-accent transition-all placeholder:text-text-muted/30"
+                      className="w-full bg-surface border border-gray-100 rounded-2xl py-4 px-6 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all font-bold"
                       placeholder="e.g., 150000"
                     />
                   </div>
-                  <div className="flex items-center space-x-4 bg-surface p-6 rounded-2xl border border-line cursor-pointer select-none" onClick={() => setIsSalaried(!isSalaried)}>
-                    <div className={cn(
-                      "w-6 h-6 rounded-md border-2 flex items-center justify-center transition-all",
-                      isSalaried ? "bg-accent border-accent" : "bg-white border-line"
-                    )}>
-                      {isSalaried && <div className="w-2 h-2 bg-white rounded-full"></div>}
-                    </div>
-                    <label className="text-[10px] font-black text-primary uppercase tracking-widest cursor-pointer">
+                  <div className="flex items-center space-x-3 bg-surface p-4 rounded-2xl border border-gray-100">
+                    <input
+                      type="checkbox"
+                      id="isSalaried"
+                      checked={isSalaried}
+                      onChange={(e) => setIsSalaried(e.target.checked)}
+                      className="w-5 h-5 rounded border-gray-100 bg-white text-primary focus:ring-primary/50"
+                    />
+                    <label htmlFor="isSalaried" className="text-text-muted font-medium cursor-pointer select-none">
                       Salaried Person?
                     </label>
                   </div>
@@ -247,7 +241,7 @@ export default function TaxCalculator() {
 
                 <button
                   onClick={calculateTax}
-                  className="kratz-button-primary w-full justify-center group"
+                  className="w-full bg-primary hover:bg-primary/90 text-white py-5 rounded-2xl font-bold transition-all shadow-xl shadow-primary/20 flex items-center justify-center space-x-3 group"
                 >
                   <Calculator className="w-5 h-5" />
                   <span>Calculate Tax Liability</span>
@@ -257,38 +251,38 @@ export default function TaxCalculator() {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="space-y-6 pt-6"
+                    className="space-y-4 pt-4"
                   >
-                    <div className="grid grid-cols-2 gap-6">
+                    <div className="grid grid-cols-2 gap-4">
                       <div className={cn(
-                        "p-8 rounded-3xl border-2 transition-all",
-                        taxResult.old <= taxResult.new ? "bg-primary border-primary text-white" : "bg-surface border-line text-primary"
+                        "p-6 rounded-3xl border transition-all",
+                        taxResult.old <= taxResult.new ? "bg-primary/5 border-primary/30" : "bg-surface border-gray-100"
                       )}>
-                        <p className={cn("text-[10px] font-black uppercase tracking-widest mb-3", taxResult.old <= taxResult.new ? "text-white/50" : "text-text-muted")}>Old Regime</p>
-                        <p className="text-3xl font-black">₹{Math.round(taxResult.old).toLocaleString('en-IN')}</p>
-                        <div className="mt-4 space-y-1">
-                          <p className={cn("text-[10px] font-bold uppercase tracking-widest", taxResult.old <= taxResult.new ? "text-white/40" : "text-text-muted")}>Std. Ded: ₹{isSalaried ? '50,000' : '0'}</p>
-                          {taxResult.old <= taxResult.new && <p className="text-[10px] text-accent font-black uppercase tracking-[0.2em] mt-2">Recommended</p>}
+                        <p className="text-xs font-bold text-text-muted uppercase tracking-wider mb-2">Old Regime</p>
+                        <p className="text-2xl font-bold text-text-main">₹{Math.round(taxResult.old).toLocaleString('en-IN')}</p>
+                        <div className="mt-3 space-y-1">
+                          <p className="text-[10px] text-text-muted">Std. Ded: ₹{isSalaried ? '50,000' : '0'}</p>
+                          {taxResult.old <= taxResult.new && <p className="text-[10px] text-primary font-bold uppercase">Recommended</p>}
                         </div>
                       </div>
                       <div className={cn(
-                        "p-8 rounded-3xl border-2 transition-all",
-                        taxResult.new < taxResult.old ? "bg-primary border-primary text-white" : "bg-surface border-line text-primary"
+                        "p-6 rounded-3xl border transition-all",
+                        taxResult.new < taxResult.old ? "bg-primary/5 border-primary/30" : "bg-surface border-gray-100"
                       )}>
-                        <p className={cn("text-[10px] font-black uppercase tracking-widest mb-3", taxResult.new < taxResult.old ? "text-white/50" : "text-text-muted")}>New Regime</p>
-                        <p className="text-3xl font-black">₹{Math.round(taxResult.new).toLocaleString('en-IN')}</p>
-                        <div className="mt-4 space-y-1">
-                          <p className={cn("text-[10px] font-bold uppercase tracking-widest", taxResult.new < taxResult.old ? "text-white/40" : "text-text-muted")}>
+                        <p className="text-xs font-bold text-text-muted uppercase tracking-wider mb-2">New Regime</p>
+                        <p className="text-2xl font-bold text-text-main">₹{Math.round(taxResult.new).toLocaleString('en-IN')}</p>
+                        <div className="mt-3 space-y-1">
+                          <p className="text-[10px] text-text-muted">
                             Std. Ded: ₹{isSalaried ? '75,000' : '0'}
                           </p>
-                          {taxResult.new < taxResult.old && <p className="text-[10px] text-accent font-black uppercase tracking-[0.2em] mt-2">Recommended</p>}
+                          {taxResult.new < taxResult.old && <p className="text-[10px] text-primary font-bold uppercase">Recommended</p>}
                         </div>
                       </div>
                     </div>
                     
-                    <div className="p-6 bg-surface border border-line rounded-2xl text-center">
-                      <p className="text-text-muted text-[10px] font-black uppercase tracking-widest">
-                        Net Taxable Income (New Regime): <span className="text-primary">₹{Math.max(0, income - (isSalaried ? 75000 : 0)).toLocaleString('en-IN')}</span>
+                    <div className="p-4 bg-surface border border-gray-100 rounded-2xl text-center">
+                      <p className="text-text-muted text-xs">
+                        Net Taxable Income (New Regime): <span className="text-text-main font-bold">₹{Math.max(0, income - (isSalaried ? 75000 : 0)).toLocaleString('en-IN')}</span>
                       </p>
                     </div>
                   </motion.div>

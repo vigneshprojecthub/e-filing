@@ -6,8 +6,8 @@
   --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --color-primary: #C2410C;
-  --color-accent: #F97316;
+  --color-primary: #2D5A54;
+  --color-accent: #98B65A;
   --color-background: #FFFFFF;
   --color-surface: #F9F9F9;
   --color-text-main: #1A1A1A;
@@ -29,7 +29,7 @@
     background: transparent;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #C2410C;
+    background: #2D5A54;
     border-radius: 10px;
   }
 }

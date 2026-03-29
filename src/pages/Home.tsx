@@ -135,31 +135,31 @@ export default function Home() {
   const highlightedServices = services.filter(s => s.isHighlighted);
 
   return (
-    <div className="pt-24">
+    <div className="pt-20">
       {/* Latest Updates Ticker */}
       {latestUpdates.length > 0 && (
-        <div className="bg-surface border-y border-line py-4 overflow-hidden whitespace-nowrap relative">
+        <div className="bg-surface border-y border-gray-100 py-3 overflow-hidden whitespace-nowrap relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
-            <div className="bg-accent text-white text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mr-6 z-10 shadow-lg shadow-accent/20">
-              Updates
+            <div className="bg-primary text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded mr-4 z-10">
+              Latest Update
             </div>
             <div className="flex-1 overflow-hidden relative">
               <motion.div 
                 animate={{ x: ["0%", "-50%"] }}
                 transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                className="flex space-x-16 items-center w-max"
+                className="flex space-x-12 items-center w-max"
               >
                 {latestUpdates.map((update) => (
-                  <div key={update.id} className="flex items-center space-x-3 text-sm text-text-main font-bold">
-                    <span className="w-2 h-2 bg-accent rounded-full"></span>
-                    <span>{update.title}</span>
+                  <div key={update.id} className="flex items-center space-x-2 text-sm text-text-muted">
+                    <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
+                    <span className="font-medium">{update.title}</span>
                   </div>
                 ))}
                 {/* Duplicate for seamless loop */}
                 {latestUpdates.map((update) => (
-                  <div key={`${update.id}-dup`} className="flex items-center space-x-3 text-sm text-text-main font-bold">
-                    <span className="w-2 h-2 bg-accent rounded-full"></span>
-                    <span>{update.title}</span>
+                  <div key={`${update.id}-dup`} className="flex items-center space-x-2 text-sm text-text-muted">
+                    <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
+                    <span className="font-medium">{update.title}</span>
                   </div>
                 ))}
               </motion.div>
@@ -169,176 +169,160 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center pt-12 pb-24 overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center pt-8 pb-16 overflow-hidden">
         {/* Background Elements */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-accent/5 blur-[150px] rounded-full"></div>
-          <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[150px] rounded-full"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:40px_40px] opacity-20"></div>
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full animate-pulse"></div>
+          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-accent/5 blur-[120px] rounded-full animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              <div className="inline-flex items-center space-x-2 bg-surface border border-line px-4 py-2 rounded-full mb-8">
-                <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse"></span>
-                <span className="text-[11px] font-black uppercase tracking-[0.2em] text-text-muted">Trusted by 500+ Businesses</span>
-              </div>
-              
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-8 leading-[0.95] tracking-tighter text-primary uppercase">
-                Expert <br />
-                <span className="text-accent">Consultancy</span> <br />
-                Solutions
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 leading-[1.1] tracking-tight text-primary">
+                Expert View <br />
+                <span className="text-accent">
+                  Consultancy
+                </span> <br />
+                Services
               </h1>
-              
-              <p className="text-lg md:text-xl text-text-muted mb-12 max-w-lg leading-relaxed font-medium">
-                We provide high-end financial and legal consultancy to help your business navigate complex MCA, GST, and Income Tax regulations with ease.
+              <p className="text-lg md:text-xl text-text-muted mb-8 md:mb-10 max-w-lg leading-relaxed">
+                Simplify and automate your MCA, GST, and Income Tax compliance with Expert View Consultancy's professional support and intelligent solutions.
               </p>
-              
-              <div className="flex flex-wrap gap-5">
-                <a href="#services" className="kratz-button-primary group">
-                  <span>View Services</span>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="#services"
+                  className="bg-primary hover:bg-primary/90 text-white px-6 py-3 md:px-8 md:py-4 rounded-2xl font-bold transition-all shadow-xl shadow-primary/20 flex items-center space-x-2 group"
+                >
+                  <span>Explore Services</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
-                <a href="#contact" className="kratz-button-outline">
-                  <span>Get in Touch</span>
+                <a
+                  href="#contact"
+                  className="bg-white hover:bg-surface text-primary border border-gray-100 px-6 py-3 md:px-8 md:py-4 rounded-2xl font-bold transition-all flex items-center space-x-2 shadow-sm"
+                >
+                  <span>Get Free Consultation</span>
                 </a>
-              </div>
-
-              <div className="mt-16 flex items-center space-x-8">
-                <div className="flex -space-x-3">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-surface overflow-hidden">
-                      <img src={`https://picsum.photos/seed/user${i}/100/100`} alt="User" className="w-full h-full object-cover" />
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  <div className="flex text-accent mb-1">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <Zap key={i} className="w-4 h-4 fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-xs font-bold text-text-main uppercase tracking-wider">4.9/5 Client Rating</p>
-                </div>
               </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
               className="relative hidden lg:block"
             >
-              <div className="relative z-10 bg-white border border-line p-4 rounded-[48px] shadow-2xl rotate-2 hover:rotate-0 transition-all duration-700 group">
-                <div className="overflow-hidden rounded-[40px]">
-                  <img 
-                    src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1000" 
-                    alt="Consultancy" 
-                    className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-1000"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                
-                {/* Floating Stats Card */}
-                <motion.div 
-                  animate={{ y: [0, -15, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -bottom-10 -left-10 bg-primary text-white p-8 rounded-[32px] shadow-2xl z-20 min-w-[240px]"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center">
-                      <ShieldCheck className="w-6 h-6 text-accent" />
+              <div className="relative z-10 bg-white border border-gray-100 p-8 rounded-[40px] shadow-2xl overflow-hidden group">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[80px] rounded-full -mr-32 -mt-32 group-hover:bg-primary/10 transition-colors"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" 
+                  alt="Dashboard" 
+                  className="rounded-2xl shadow-2xl border border-gray-100 group-hover:scale-[1.02] transition-transform duration-500"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="mt-8 grid grid-cols-2 gap-6">
+                  <div className="bg-surface p-6 rounded-3xl border border-gray-100">
+                    <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                      <ShieldCheck className="w-6 h-6 text-primary" />
                     </div>
-                    <span className="text-3xl font-black">99%</span>
+                    <h3 className="text-text-main font-bold mb-1">Secure</h3>
+                    <p className="text-text-muted text-xs">Bank-grade data encryption</p>
                   </div>
-                  <p className="text-sm font-bold uppercase tracking-widest text-white/70">Compliance Success</p>
-                  <div className="mt-4 h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                    <div className="h-full w-[99%] bg-accent"></div>
+                  <div className="bg-surface p-6 rounded-3xl border border-gray-100">
+                    <div className="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mb-4">
+                      <Users className="w-6 h-6 text-accent" />
+                    </div>
+                    <h3 className="text-text-main font-bold mb-1">Expert Support</h3>
+                    <p className="text-text-muted text-xs">24/7 Professional assistance</p>
                   </div>
-                </motion.div>
-
-                {/* Floating Badge */}
-                <div className="absolute -top-10 -right-10 bg-accent text-white w-32 h-32 rounded-full flex flex-col items-center justify-center shadow-2xl z-20 rotate-12">
-                  <span className="text-2xl font-black">10+</span>
-                  <span className="text-[10px] font-bold uppercase tracking-widest">Years Exp</span>
                 </div>
               </div>
+              {/* Decorative Floating Elements */}
+              <motion.div 
+                animate={{ y: [0, -20, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-10 -right-10 bg-white border border-gray-100 p-4 rounded-2xl shadow-xl z-20"
+              >
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
+                    <CheckCircle2 className="w-5 h-5 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-text-muted uppercase font-bold">GST Filed</p>
+                    <p className="text-sm font-bold text-text-main">Successfully</p>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
+      
+      {/* Latest Updates Ticker */}
+      {/* Ticker moved to top */}
 
       {/* Services Section */}
-      <section id="services" className="py-32 relative bg-surface/50">
+      <section id="services" className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
-              <div className="max-w-2xl">
-                <span className="text-accent font-black text-[11px] uppercase tracking-[0.3em] mb-4 block">Our Expertise</span>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary uppercase leading-none">
-                  Tailored <span className="text-accent">Solutions</span> <br />
-                  For Your Business
-                </h2>
-              </div>
-              <p className="text-text-muted max-w-md font-medium">
-                We offer a wide range of professional services designed to help you focus on growing your business while we handle the complexities.
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">
+                Our <span className="text-accent">Services</span>
+              </h2>
+              <p className="text-text-muted max-w-2xl mx-auto text-sm">
+                Comprehensive business solutions tailored for your growth.
               </p>
             </div>
           </Reveal>
 
           {isPageLoading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="h-80 bg-white rounded-3xl animate-pulse border border-line"></div>
+                <div key={i} className="h-64 bg-surface rounded-3xl animate-pulse border border-gray-100"></div>
               ))}
             </div>
           ) : highlightedServices.length === 0 ? (
             <Reveal>
-              <div className="text-center py-24 bg-white rounded-[48px] border border-line border-dashed">
-                <div className="w-24 h-24 bg-surface rounded-3xl flex items-center justify-center mx-auto mb-8">
-                  <Briefcase className="w-12 h-12 text-primary" />
+              <div className="text-center py-20 bg-surface rounded-[40px] border border-gray-100">
+                <div className="w-20 h-20 bg-primary/10 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                  <Briefcase className="w-10 h-10 text-primary" />
                 </div>
-                <h3 className="text-3xl font-black text-primary uppercase mb-4">No Featured Services</h3>
-                <p className="text-text-muted mb-10 max-w-md mx-auto font-medium">
-                  Our team is currently updating our service portfolio. Check back soon for our latest offerings.
+                <h3 className="text-2xl font-bold text-text-main mb-4">No Featured Services</h3>
+                <p className="text-text-muted mb-8 max-w-md mx-auto">
+                  We are currently updating our featured services. Please explore our full range of services in the menu.
                 </p>
-                <a href="#contact" className="kratz-button-outline inline-flex">Contact Support</a>
               </div>
             </Reveal>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {highlightedServices.map((service, idx) => (
                 <Reveal key={service.id} delay={idx * 0.1}>
-                  <div className="kratz-card group h-full flex flex-col">
-                    <div className="mb-8 flex items-start justify-between">
-                      <div className="w-16 h-16 bg-surface rounded-2xl flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                        <Briefcase className="w-8 h-8" />
-                      </div>
-                      <span className="text-[10px] font-black text-accent uppercase tracking-widest bg-accent/10 px-3 py-1 rounded-full">
+                  <div className="group bg-white hover:bg-surface border border-gray-100 hover:border-primary/50 p-8 rounded-3xl transition-all duration-300 relative overflow-hidden h-full flex flex-col">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 blur-2xl rounded-full -mr-12 -mt-12 group-hover:bg-primary/10 transition-colors"></div>
+                    
+                    <div className="relative z-10 flex flex-col h-full">
+                      <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-4 inline-block w-fit">
                         {service.category}
                       </span>
+                      <h4 className="text-xl font-bold text-text-main mb-4 group-hover:text-primary transition-colors">{service.title}</h4>
+                      <p className="text-text-muted text-sm mb-8 line-clamp-3 leading-relaxed flex-grow">
+                        {service.description}
+                      </p>
+                      <div className="flex items-center space-x-4 mt-auto">
+                        <Link
+                          to={`/service/${service.id}`}
+                          className="flex-grow bg-primary hover:bg-primary/90 text-white py-3 rounded-xl text-sm font-bold transition-all flex items-center justify-center space-x-2"
+                        >
+                          <span>View Details</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      </div>
                     </div>
-                    
-                    <h4 className="text-2xl font-black text-primary uppercase mb-4 group-hover:text-accent transition-colors">
-                      {service.title}
-                    </h4>
-                    
-                    <p className="text-text-muted text-sm mb-10 line-clamp-3 leading-relaxed font-medium flex-grow">
-                      {service.description}
-                    </p>
-                    
-                    <Link
-                      to={`/service/${service.id}`}
-                      className="inline-flex items-center space-x-2 text-sm font-black uppercase tracking-widest text-primary group-hover:text-accent transition-all"
-                    >
-                      <span>Learn More</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-                    </Link>
                   </div>
                 </Reveal>
               ))}
@@ -360,131 +344,122 @@ export default function Home() {
       <TaxCalculator />
 
       {/* Contact Section */}
-      <section id="contact" className="py-32 relative overflow-hidden bg-white">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-surface/50 -skew-x-12 translate-x-1/2"></div>
+      <section id="contact" className="py-24 relative overflow-hidden">
+        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-primary/5 to-transparent"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <Reveal>
-            <div className="bg-primary rounded-[64px] overflow-hidden shadow-3xl">
+            <div className="bg-white border border-gray-100 rounded-[40px] overflow-hidden shadow-2xl">
               <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="p-12 md:p-16 lg:p-24 text-white flex flex-col justify-center">
-                  <span className="text-accent font-black text-[11px] uppercase tracking-[0.3em] mb-6 block">Ready to start?</span>
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-10 uppercase leading-[0.9] tracking-tighter">
-                    Let's Build <br />
-                    Something <span className="text-accent">Great</span>
-                  </h2>
-                  <p className="text-white/60 mb-16 leading-relaxed font-medium max-w-md">
-                    Our team of experts is ready to help you navigate the complexities of financial compliance. Reach out today for a free consultation.
+                <div className="p-8 md:p-12 lg:p-20 bg-primary text-white">
+                  <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8">Get in <span className="text-accent">Touch</span></h2>
+                  <p className="text-white/70 mb-8 md:mb-12 leading-relaxed text-sm md:text-base">
+                    Have questions about our services or need expert advice? Fill out the form and our team will get back to you within 24 hours.
                   </p>
 
-                  <div className="space-y-10">
-                    <a href="mailto:expertviewtaxsolution@gmail.com" className="flex items-center space-x-8 group">
-                      <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-500">
-                        <Mail className="w-7 h-7 text-white" />
+                  <div className="space-y-8">
+                    <a href="mailto:expertviewtaxsolution@gmail.com" className="flex items-center space-x-6 group">
+                      <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-accent transition-colors">
+                        <Mail className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em] mb-1">Email Support</p>
-                        <p className="text-lg font-bold group-hover:text-accent transition-colors">expertviewtaxsolution@gmail.com</p>
+                        <p className="text-white/50 text-xs font-bold uppercase tracking-wider">Email Us</p>
+                        <p className="text-white font-bold">expertviewtaxsolution@gmail.com</p>
                       </div>
                     </a>
-                    <a href="tel:+918754065383" className="flex items-center space-x-8 group">
-                      <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-500">
-                        <Phone className="w-7 h-7 text-white" />
+                    <a href="tel:+918754065383" className="flex items-center space-x-6 group">
+                      <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-accent transition-colors">
+                        <Phone className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em] mb-1">Direct Call</p>
-                        <p className="text-lg font-bold group-hover:text-accent transition-colors">+91 87540 65383</p>
+                        <p className="text-white/50 text-xs font-bold uppercase tracking-wider">Call Us</p>
+                        <p className="text-white font-bold">+91 87540 65383</p>
                       </div>
                     </a>
-                    <a href="https://wa.me/918754065383" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-8 group">
-                      <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-500">
-                        <MessageSquare className="w-7 h-7 text-white" />
+                    <a href="https://wa.me/918754065383" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-6 group">
+                      <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-accent transition-colors">
+                        <MessageSquare className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em] mb-1">WhatsApp Us</p>
-                        <p className="text-lg font-bold group-hover:text-accent transition-colors">+91 87540 65383</p>
+                        <p className="text-white/50 text-xs font-bold uppercase tracking-wider">WhatsApp</p>
+                        <p className="text-white font-bold">+91 87540 65383</p>
                       </div>
                     </a>
                   </div>
                 </div>
 
-                <div className="p-12 md:p-16 lg:p-24 bg-surface flex flex-col justify-center">
-                  <form onSubmit={handleEnquirySubmit} className="space-y-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-black text-primary uppercase tracking-widest ml-1">Full Name</label>
+                <div className="p-8 md:p-12 lg:p-20 bg-surface">
+                  <form onSubmit={handleEnquirySubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-text-muted mb-2">Full Name</label>
                         <input
                           type="text"
                           required
                           value={enquiryForm.name}
                           onChange={(e) => setEnquiryForm({ ...enquiryForm, name: e.target.value })}
-                          className="w-full bg-white border border-line rounded-2xl py-5 px-6 text-primary font-bold focus:outline-none focus:border-accent transition-all placeholder:text-text-muted/30"
-                          placeholder="Your Name"
+                          className="w-full bg-white border border-gray-100 rounded-xl py-4 px-4 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                          placeholder="John Doe"
                         />
                       </div>
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-black text-primary uppercase tracking-widest ml-1">Email Address</label>
+                      <div>
+                        <label className="block text-sm font-medium text-text-muted mb-2">Email Address</label>
                         <input
                           type="email"
                           required
                           value={enquiryForm.email}
                           onChange={(e) => setEnquiryForm({ ...enquiryForm, email: e.target.value })}
-                          className="w-full bg-white border border-line rounded-2xl py-5 px-6 text-primary font-bold focus:outline-none focus:border-accent transition-all placeholder:text-text-muted/30"
-                          placeholder="hello@example.com"
+                          className="w-full bg-white border border-gray-100 rounded-xl py-4 px-4 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                          placeholder="john@example.com"
                         />
                       </div>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-black text-primary uppercase tracking-widest ml-1">Phone Number</label>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-text-muted mb-2">Contact Number</label>
                         <input
                           type="tel"
                           required
                           value={enquiryForm.phone}
                           onChange={(e) => setEnquiryForm({ ...enquiryForm, phone: e.target.value })}
-                          className="w-full bg-white border border-line rounded-2xl py-5 px-6 text-primary font-bold focus:outline-none focus:border-accent transition-all placeholder:text-text-muted/30"
-                          placeholder="+91 00000 00000"
+                          className="w-full bg-white border border-gray-100 rounded-xl py-4 px-4 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                          placeholder="+91 87540 65383"
                         />
                       </div>
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-black text-primary uppercase tracking-widest ml-1">Service</label>
-                        <div className="relative">
-                          <select
-                            required
-                            value={enquiryForm.service}
-                            onChange={(e) => setEnquiryForm({ ...enquiryForm, service: e.target.value })}
-                            className="w-full bg-white border border-line rounded-2xl py-5 px-6 text-primary font-bold focus:outline-none focus:border-accent transition-all appearance-none cursor-pointer"
-                          >
-                            <option value="">Select Service</option>
-                            {services.map(s => (
-                              <option key={s.id} value={s.title}>{s.title}</option>
-                            ))}
-                            <option value="Other">Other</option>
-                          </select>
-                          <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-text-muted">
-                            <ArrowRight className="w-4 h-4 rotate-90" />
-                          </div>
-                        </div>
+                      <div>
+                        <label className="block text-sm font-medium text-text-muted mb-2">Service Interested In</label>
+                        <select
+                          required
+                          value={enquiryForm.service}
+                          onChange={(e) => setEnquiryForm({ ...enquiryForm, service: e.target.value })}
+                          className="w-full bg-white border border-gray-100 rounded-xl py-4 px-4 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all appearance-none"
+                        >
+                          <option value="">Select a service</option>
+                          {services.map(s => (
+                            <option key={s.id} value={s.title}>{s.title}</option>
+                          ))}
+                          <option value="Other">Other</option>
+                        </select>
                       </div>
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-black text-primary uppercase tracking-widest ml-1">Message</label>
+                    <div>
+                      <label className="block text-sm font-medium text-text-muted mb-2">Message</label>
                       <textarea
                         required
                         value={enquiryForm.message}
                         onChange={(e) => setEnquiryForm({ ...enquiryForm, message: e.target.value })}
                         rows={4}
-                        className="w-full bg-white border border-line rounded-2xl py-5 px-6 text-primary font-bold focus:outline-none focus:border-accent transition-all resize-none placeholder:text-text-muted/30"
-                        placeholder="Tell us about your project..."
+                        className="w-full bg-white border border-gray-100 rounded-xl py-4 px-4 text-text-main focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
+                        placeholder="Tell us more about your requirements..."
                       ></textarea>
                     </div>
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="kratz-button-primary w-full justify-center group"
+                      className="w-full bg-primary hover:bg-primary/90 disabled:bg-primary/50 text-white py-5 rounded-2xl font-bold transition-all shadow-xl shadow-primary/20 flex items-center justify-center space-x-3 group"
                     >
                       {submitting ? (
-                        <Loader2 className="w-6 h-6 animate-spin" />
+                        <Loader2 className="w-5 h-5 animate-spin" />
                       ) : (
                         <>
                           <span>Send Message</span>
