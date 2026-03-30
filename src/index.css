@@ -5,13 +5,12 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-
-  --color-primary: #2D5A54;
-  --color-accent: #98B65A;
-  --color-background: #FFFFFF;
-  --color-surface: #F9F9F9;
-  --color-text-main: #1A1A1A;
-  --color-text-muted: #666666;
+--color-primary: #F97316;       /* Main orange */
+--color-accent: #C2410C;        /* Dark burnt orange */
+--color-background: #FFFFFF;    
+--color-surface: #FFF7ED;       /* Light orange tint */
+--color-text-main: #1A1A1A;
+--color-text-muted: #7C5E4A;    /* Warm muted brown */
 }
 
 @layer utilities {
@@ -29,7 +28,7 @@
     background: transparent;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #2D5A54;
+    background: #98B65A;
     border-radius: 10px;
   }
 }
