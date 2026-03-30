@@ -10,7 +10,7 @@
 --color-background: #FFFFFF;    
 --color-surface: #FFF7ED;       /* Light orange tint */
 --color-text-main: #1A1A1A;
---color-text-muted: #7C5E4A;   
+--color-text-muted: #7C5E4A;    /* Warm muted brown */
 }
 
 @layer utilities {
